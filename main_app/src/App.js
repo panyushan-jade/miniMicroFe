@@ -60,9 +60,10 @@ const App = () => {
             padding: 24,
             minHeight: 280,
           }}
-        >
+        > 
+          <span id="main_app">我是主应用的内容</span>
           <div id="microContainer">
-            我是主应用的内容
+            
           </div>
         </Content>
       </Layout>

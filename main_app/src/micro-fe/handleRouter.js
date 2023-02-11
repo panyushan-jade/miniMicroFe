@@ -1,10 +1,17 @@
 
-import { importHtmlEntry } from './importHtmlEntry'
+import { importHtmlEntry } from './importHtmlEntry';
+import { getPrevRoute } from './rewriteRouter'
 /* 
     处理路由变化
 */
 export const handleRouter = async (apps) => {
     console.log('处理路由变化');
+    // 卸载上一个应用
+    const preApps = apps.find( item => getPrevRoute().startsWith(item.activeRule))
+    if(preApps){
+        console.log('preApps: ', preApps);
+        await unmount(preApps)
+    }
     // 获取当前路径 匹配注册表
     const app = apps.find( app => window.location.pathname.startsWith(app.activeRule))
     console.log('app: ', app);
@@ -17,6 +24,7 @@ export const handleRouter = async (apps) => {
     container.appendChild(template);
     // 设置全局变量 
     window.__POWERED_BY_QIANKUN__ = true;
+    window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = app.entry.endsWith('/') ? app.entry : app.entry+'/';
     // 拿到子应用的钩子 并调用
     const subAppHooks = await execScripts();
     app.bootstrap = subAppHooks.bootstrap;
@@ -36,5 +44,7 @@ export async function mount(app) {
     }))
 }
 export async function unmount(app) {
-    app.unmount && (await app.unmount(app))
+    app.unmount && (await app.unmount({
+        container: document.querySelector(app.container)
+    }))
 }
