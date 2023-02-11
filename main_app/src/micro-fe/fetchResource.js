@@ -1,0 +1,1 @@
+export const fetchResource = async (entry) => await fetch(entry).then( res => res.text())

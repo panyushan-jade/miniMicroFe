@@ -12,6 +12,10 @@ const { Header, Sider, Content } = Layout;
 
 const App = () => {
 
+  useState(() => {
+    window.history.pushState(null,'','/')
+  },[])
+
   return (
     <Layout>
       <Sider trigger={null}>

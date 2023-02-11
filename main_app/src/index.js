@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { registerMicroApps, start } from 'qiankun';
+import { registerMicroApps, start } from './micro-fe';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 registerMicroApps([
@@ -29,11 +29,7 @@ registerMicroApps([
 
 start();
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App />);
 
 
 
