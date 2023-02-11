@@ -57,7 +57,9 @@ const App = () => {
             minHeight: 280,
           }}
         >
-          <div id="microContainer"></div>
+          <div id="microContainer">
+            我是主应用的内容
+          </div>
         </Content>
       </Layout>
     </Layout>

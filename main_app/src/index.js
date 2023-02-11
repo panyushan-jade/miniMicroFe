@@ -19,12 +19,12 @@ registerMicroApps([
     container: '#microContainer',
     activeRule: '/vue2_app',
   },
-  // {
-  //   name: 'vue3App',
-  //   entry: '//localhost:8081',
-  //   container: '#microContainer',
-  //   activeRule: '/vue3_app',
-  // },
+  {
+    name: 'vue3App',
+    entry: '//localhost:8081',
+    container: '#microContainer',
+    activeRule: '/vue3_app',
+  },
 ]);
 
 start();
