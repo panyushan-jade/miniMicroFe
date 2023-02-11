@@ -1,6 +1,6 @@
 import {
   MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  HomeOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
@@ -19,22 +19,28 @@ const App = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['/']}
+          onClick={({key}) => {
+            // history.push()
+            window.history.pushState(null,'', key)
+          }}
           items={[
             {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
+              key: '/',
+              icon: <HomeOutlined />,
+              label: '首页',
             },
             {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
+              key: '/react_app',
+              label: 'react app',
             },
             {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
+              key: 'vue2_app',
+              label: 'vue2 app',
+            },
+            {
+              key: 'vue3_app',
+              label: 'vue3 app',
             },
           ]}
         />
@@ -51,7 +57,7 @@ const App = () => {
             minHeight: 280,
           }}
         >
-          Content
+          <div id="microContainer"></div>
         </Content>
       </Layout>
     </Layout>
