@@ -5,6 +5,27 @@ import { getPrevRoute } from './rewriteRouter'
     处理路由变化
 */
 export const handleRouter = async (apps) => {
+    //获取元素
+    // var box = document.getElementsByTagName("head")[0];
+    // var config = { childList: true};
+    // var observer = new MutationObserver(function (mutationsList, observer) {
+    //     observer.disconnect()
+    //     console.log('哈哈哈哈',mutationsList);
+    //     console.log('observer',observer);
+    //     for (var mutation of mutationsList) {
+    //         mutation.target.removeChild(mutation.addedNodes[0])
+    //         // console.log('mutation.type',mutation.target);
+    //         // console.log('mutation.type22',mutation.target.type);
+    //         // if (mutation.type == 'childList') {
+    //         //     console.log('子元素被修改');
+    //         // }
+    //         // else if (mutation.type == 'attributes') {
+    //         //     console.log(mutation.attributeName + '属性被修改');
+    //         // }
+    //     }
+    // });
+    // //开始观测
+    // observer.observe(box, config);
     console.log('处理路由变化');
     // 卸载上一个应用
     const preApps = apps.find( item => getPrevRoute().startsWith(item.activeRule))
@@ -36,6 +57,8 @@ export const handleRouter = async (apps) => {
     app.unmount = subAppHooks.unmount;
     await bootstrap(app);
     await mount(app);
+//配置选项
+    
 }
 
 
