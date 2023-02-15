@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { registerMicroApps, start } from 'qiankun';
-// import { registerMicroApps, start } from './micro-fe';
+// import { registerMicroApps, start } from 'qiankun';
+import { registerMicroApps, start } from './micro-fe';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 registerMicroApps([
   {
     name: 'reactApp', // app name registered
-    entry: '//localhost:3001',
+    entry: '//localhost:3000',
     container: '#microContainer',
     activeRule: '/react_app',
   },

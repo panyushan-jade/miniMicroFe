@@ -9,11 +9,14 @@
 */
 import { fetchResource } from './fetchResource'
 export const importHtmlEntry = async (entry) => {
-    const template = document.createElement('div')
+    const template = document.createElement('div');
+    template.setAttribute('id','subapp_root')
     const html = await fetchResource(entry)
-    template.innerHTML = html;
+    let shadow = template.attachShadow({mode: 'open'});
+    shadow.innerHTML = html
     // 获取所有script
-    const scripts = template.querySelectorAll('script')
+    const scripts = template.shadowRoot.querySelectorAll('script')
+    console.log('scripts: ', scripts);
     async function getExternalScripts(){
         return Promise.all(Array.from(scripts).map( script => {
             const src = script.getAttribute('src')

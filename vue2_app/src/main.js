@@ -11,6 +11,9 @@ Vue.config.productionTip = false
 let instance = null;
 function render(props = {}) {
   const { container } = props;
+  // console.log('哈哈哈vue2',container.querySelector('#app'));
+  // console.log('哈哈哈vue2ddd',container.querySelector('.warpper').shadowRoot);
+  // const cont = container.querySelector('.warpper').shadowRoot
   instance = new Vue({
     render: (h) => h(App),
   }).$mount(container ? container.querySelector('#app') : '#app');
