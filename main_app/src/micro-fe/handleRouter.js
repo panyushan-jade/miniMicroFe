@@ -5,6 +5,7 @@ import { getPrevRoute } from './rewriteRouter'
     处理路由变化
 */
 export const handleRouter = async (apps) => {
+    console.log('wwwwwwwwww',process.env.NODE_ENV);
     //获取元素
     // var box = document.getElementsByTagName("head")[0];
     // var config = { childList: true};
