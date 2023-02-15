@@ -13,7 +13,7 @@ export const handleRouter = async (apps) => {
     //     console.log('哈哈哈哈',mutationsList);
     //     console.log('observer',observer);
     //     for (var mutation of mutationsList) {
-    //         mutation.target.removeChild(mutation.addedNodes[0])
+    //         mutation.addedNodes[0].remove()
     //         // console.log('mutation.type',mutation.target);
     //         // console.log('mutation.type22',mutation.target.type);
     //         // if (mutation.type == 'childList') {
