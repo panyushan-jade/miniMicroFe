@@ -7,7 +7,7 @@
         execScripts
     }
 */
-import { fetchResource } from './fetchResource'
+import { fetchResource } from './fetchResource';
 export const importHtmlEntry = async (entry) => {
     const template = document.createElement('div');
     template.setAttribute('id','subapp_root')
@@ -28,13 +28,19 @@ export const importHtmlEntry = async (entry) => {
         }))
     }
 
-    async function execScripts(){
+    async function execScripts(global){
         const scripts = await getExternalScripts()
         const module = {exports:{}}
-        const exports = module.exports
+        const exports = module.exports;
         scripts.forEach( script =>  {
-            // script 通过umd打包 且eval可以访问外部变量 没有作用域 
-            eval(script)
+            // script 通过umd打包 且eval/new Function可以访问外部变量 没有作用域 
+            // eval(script)
+            const scriptText = `
+                ((window) => {
+                ${script}
+                })(global)
+            `
+            eval(scriptText)
         })
         return module.exports
     }

@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  window.a = '我是子应用'
+  window.a = '我是子应用';
+  console.log('window.isNaN',window.isNaN)
   return (
     <div className="App">
       <header className="App-header">

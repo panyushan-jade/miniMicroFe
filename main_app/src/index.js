@@ -28,11 +28,7 @@ registerMicroApps([
   },
 ]);
 
-start({
-  sandbox:{
-    strictStyleIsolation: true
-  }
-});
+start();
 
 root.render(<App />);
 
