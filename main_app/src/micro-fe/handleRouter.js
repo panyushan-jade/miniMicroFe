@@ -1,7 +1,7 @@
 
 import { importHtmlEntry } from './importHtmlEntry';
 import { getPrevRoute } from './rewriteRouter';
-import { SnapshotSandbox } from './snapshotSandbox';
+import { SnapshotSandbox,ProxySandbox } from './snapshotSandbox';
 /* 
     处理路由变化
 */
@@ -43,10 +43,11 @@ export const handleRouter = async (apps) => {
     window.__POWERED_BY_QIANKUN__ = true;
     window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ = app.entry.endsWith('/') ? app.entry : app.entry+'/';
     // 拿到子应用的钩子 并调用
-    const sandbox = new SnapshotSandbox()
-    sandbox.active()
-    console.log('ddddddddd',sandbox.snapshotWindow);
-    const subAppHooks = await execScripts(sandbox.snapshotWindow);
+    const sandbox = new SnapshotSandbox();
+    const proxySandbox = new ProxySandbox('test');
+    // sandbox.active()
+    proxySandbox.active()
+    const subAppHooks = await execScripts(proxySandbox.proxy);
     app.bootstrap = subAppHooks.bootstrap;
     app.mount = subAppHooks.mount;
     app.unmount = subAppHooks.unmount;
